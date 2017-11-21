@@ -18,22 +18,22 @@ public class Usuario implements Serializable {
 	@Id
 	@GeneratedValue( strategy = GenerationType.IDENTITY) 
 	private int idCliente;
-	@Column(nullable = false)
+	@Column(nullable = false, name = "nome_completo")
 	private String nomeCompletoCliente;
-	@Column(nullable = false)
+	@Column(nullable = false, name = "cpf_cliente")
 	private String cpfCliente;
-	@Column(nullable = false)
+	@Column(nullable = false, name = "rg_cliente")
 	private String rgCliente;
-	@Column(nullable = false)
+	@Column(nullable = false, name = "senha_cliente")
 	private String senhaCliente;
-	@Column(nullable = false)
+	@Column(nullable = false, name = "tipo_cliente")
 	private char tipoCliente;
-	@Column(nullable = false)
+	@Column(nullable = false, name = "nome_cliente")
 	private String nomeCliente;
-	@Column(nullable = false)
+	@Column(nullable = false, name = "sobrenome_cliente")
 	private String sobrenomeCliente;
 	@ManyToOne
-	@JoinColumn(name = "idSituacao")
+	@JoinColumn(name = "id_situacao")
 	private Situacao situacao;
 
 	public Usuario() {}

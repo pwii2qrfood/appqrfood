@@ -17,7 +17,7 @@ public class Situacao implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idSituacao;
-	@Column(nullable = false)
+	@Column(nullable = false, name = "tipo_situacao")
 	private char tipoSituacao;
 	@Column(nullable = false)
 	private String descricao;
