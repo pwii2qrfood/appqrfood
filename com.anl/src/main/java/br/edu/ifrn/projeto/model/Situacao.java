@@ -7,18 +7,22 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table ( name = "situacao" )
 public class Situacao implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@OneToMany
 	private int idSituacao;
+	
 	@Column(nullable = false, name = "tipo_situacao")
 	private char tipoSituacao;
+	
 	@Column(nullable = false)
 	private String descricao;
 	
@@ -28,31 +32,25 @@ public class Situacao implements Serializable {
 		return idSituacao;
 	}
 
-
 	public void setIdSituacao(int idSituacao) {
 		this.idSituacao = idSituacao;
 	}
-
 
 	public char getTipoSituacao() {
 		return tipoSituacao;
 	}
 
-
 	public void setTipoSituacao(char tipoSituacao) {
 		this.tipoSituacao = tipoSituacao;
 	}
-
 
 	public String getDescricao() {
 		return descricao;
 	}
 
-
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-
 
 	@Override
 	public int hashCode() {
@@ -74,8 +72,5 @@ public class Situacao implements Serializable {
 		if (idSituacao != other.idSituacao)
 			return false;
 		return true;
-	}
-		
-	
-	
+	}	
 }
