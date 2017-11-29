@@ -14,18 +14,18 @@ public class Telefone implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@GeneratedValue ( strategy = GenerationType.IDENTITY )
 	private int idTelefone;
 	
-	@Column (name = "numero", length = 9, nullable = false)
+	@Column ( name = "numero", length = 9, nullable = false )
 	private String numero;
 	
-	@JoinColumn ( name = "id_usuario")
+	@JoinColumn ( name = "id_usuario" )
 	@Column ( nullable = false)
 	@ManyToOne
 	private Usuario usuario;
 	
-	@JoinColumn ( name = "id_funcionario")
+	@JoinColumn ( name = "id_funcionario" )
 	@Column ( nullable = false )
 	@ManyToOne
 	private Funcionario funcionario;

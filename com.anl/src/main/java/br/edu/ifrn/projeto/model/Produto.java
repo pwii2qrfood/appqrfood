@@ -3,31 +3,35 @@ package br.edu.ifrn.projeto.model;
 import java.io.Serializable;
 
 import javax.persistence.Column;
-import javax.persistence.EnumType;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table ( name = "produto" )
 public class Produto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@GeneratedValue ( strategy = GenerationType.IDENTITY )
 	private int idProduto;
 	
-	@Column ( name = "nome_produto", length = 70, nullable = false)
+	@Column ( name = "nome_produto", length = 70, nullable = false )
 	private String nomeProduto;
 	
-	@Column ( name = "preco", nullable = false)
+	@Column ( name = "preco", nullable = false )
 	private Double preco;
 	
-	@Column ( name = "descricao", length = 100, nullable = false)
+	@Column ( name = "descricao", length = 100, nullable = false )
 	private String descricao;
 	
-	@JoinColumn ( name = "id_situacao", nullable = false)
 	@ManyToOne
+	@JoinColumn ( name = "id_situacao", nullable = false )
 	private Situacao situacao;
 	
 	public Produto () {

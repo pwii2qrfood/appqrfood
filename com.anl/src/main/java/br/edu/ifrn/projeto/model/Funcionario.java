@@ -46,8 +46,8 @@ public class Funcionario implements Serializable {
 	@Column ( name = "sobrenome", length = 20, nullable = false )
 	private String sobreNome;
 	
-	@JoinColumn ( name = "id_situacao")
-	@ManyToOne
+	@JoinColumn ( name = "id_situacao" )
+	@ManyToOne 
 	private Situacao situacao;
 	
 	public Funcionario() {

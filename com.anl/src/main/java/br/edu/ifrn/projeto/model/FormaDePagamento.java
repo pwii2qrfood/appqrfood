@@ -12,23 +12,23 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table ( name = "formadepagamento")
+@Table ( name = "formadepagamento" )
 public class FormaDePagamento implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@GeneratedValue ( strategy = GenerationType.IDENTITY )
 	private int idFormaPagamento;
 	
-	@Column(nullable = false, name = "tipo_pagamento")
+	@Column( nullable = false, name = "tipo_pagamento" )
 	private String tipoPagamento;
 	
-	@Column(nullable = false)
+	@Column( nullable = false )
 	private  String descricao;
 	
 	@ManyToOne
-	@JoinColumn(name = "id_situacao")
+	@JoinColumn( name = "id_situacao" )
 	private Situacao situacao;
 	
 	
