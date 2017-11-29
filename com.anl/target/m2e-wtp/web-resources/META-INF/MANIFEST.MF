@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: aos
 Build-Jdk: 1.8.0_144
+=======
+Built-By: rnona
+Build-Jdk: 1.8.0_151
+>>>>>>> 569bea83077cb37807331a50b1c0f099147b2932
 Created-By: Maven Integration for Eclipse
 

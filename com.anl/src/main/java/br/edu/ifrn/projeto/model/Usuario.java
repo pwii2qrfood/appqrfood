@@ -11,27 +11,36 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@Entity @Table
+@Entity
+@Table (name = "usuario")
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue( strategy = GenerationType.IDENTITY) 
 	private int idCliente;
+	
 	@Column(nullable = false, name = "nome_completo")
 	private String nomeCompletoCliente;
+	
 	@Column(nullable = false, name = "cpf_cliente")
 	private String cpfCliente;
+	
 	@Column(nullable = false, name = "rg_cliente")
 	private String rgCliente;
+	
 	@Column(nullable = false, name = "senha_cliente")
 	private String senhaCliente;
+	
 	@Column(nullable = false, name = "tipo_cliente")
 	private char tipoCliente;
+	
 	@Column(nullable = false, name = "nome_cliente")
 	private String nomeCliente;
+	
 	@Column(nullable = false, name = "sobrenome_cliente")
 	private String sobrenomeCliente;
+	
 	@ManyToOne
 	@JoinColumn(name = "id_situacao")
 	private Situacao situacao;

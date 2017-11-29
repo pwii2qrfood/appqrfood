@@ -3,26 +3,58 @@ package br.edu.ifrn.projeto.model;
 import java.io.Serializable;
 import java.util.Date;
 
-public class funcionario implements Serializable {
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+public class Funcionario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
+	@Id
+	@GeneratedValue ( strategy = GenerationType.IDENTITY )
 	private int idFuncionario;
+	
+	@Column ( name = "matricula", length = 5, nullable = false )
 	private String matricula;
+	
+	@Column ( name = "nome_completo", length = 100, nullable = false )
 	private String nomeCompleto;
+	
+	@Temporal ( TemporalType.DATE )
+	@Column ( name = "data_admissao", nullable = false )
 	private Date dataAdmissao;
+	
+	@Temporal ( TemporalType.DATE )
+	@Column ( name = "data_demissao", nullable = true )
 	private Date dataDemissao;
+	
+	@Column ( name = "cpf", length = 14, nullable = false )
 	private String cpf;
+	
+	@Column ( name = "rg", length = 9, nullable = false )
 	private String rg;
+	
+	@Column ( name = "name", length = 20, nullable = false )
 	private String nome;
+		
+	@Column ( name = "sobrenome", length = 20, nullable = false )
 	private String sobreNome;
+	
+	@JoinColumn ( name = "id_situacao" )
+	@ManyToOne 
 	private Situacao situacao;
 	
-	public funcionario() {
+	public Funcionario() {
 		
 	}
 	
-	public funcionario(int idFuncionario, String matricula, String nomeCompleto, Date dataAdmissao, Date dataDemissao,
+	public Funcionario(int idFuncionario, String matricula, String nomeCompleto, Date dataAdmissao, Date dataDemissao,
 						String cpf, String rg, String nome, String sobreNome, Situacao situacao) {
 		
 		this.idFuncionario = idFuncionario;
@@ -134,7 +166,7 @@ public class funcionario implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		funcionario other = (funcionario) obj;
+		Funcionario other = (Funcionario) obj;
 		if (idFuncionario != other.idFuncionario)
 			return false;
 		return true;
