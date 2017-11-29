@@ -16,6 +16,8 @@ import javax.persistence.Table;
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+		//teste Laisa
+	
 	@Id
 	@GeneratedValue( strategy = GenerationType.IDENTITY) 
 	private int idCliente;
