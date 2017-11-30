@@ -3,6 +3,8 @@ package br.edu.ifrn.projeto.model;
 import java.io.Serializable;
 import java.sql.Time;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,8 +12,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+
 
 @Entity
 @Table ( name = "pedido")
@@ -38,6 +44,18 @@ public class Pedido implements Serializable {
 	@OneToOne
 	@JoinColumn ( name = "id_situacao_pedido" )
 	private SituacaoPedido situacaopedido;
+	
+	@ManyToMany
+	@JoinTable(name="produto_has_pedido",
+	joinColumns = @JoinColumn (name = "pedido_id"),
+	inverseJoinColumns = @JoinColumn(name= "produto_id"))
+	private Set<Produto> produtos = new HashSet<>();
+	
+	@ManyToMany
+	@JoinTable(name= "pedido_has_formapagamento",
+	joinColumns = @JoinColumn (name = "pedido_id"),
+	inverseJoinColumns = @JoinColumn (name="formapagamento_id"))
+	private Set<FormaDePagamento> formaspagamento = new HashSet<>();
 	
 	public int getIdPedido() {
 		return idPedido;
@@ -85,6 +103,23 @@ public class Pedido implements Serializable {
 
 	public void setSituacaopedido(SituacaoPedido situacaopedido) {
 		this.situacaopedido = situacaopedido;
+	}
+	
+
+	public Set<Produto> getProdutos() {
+		return produtos;
+	}
+
+	public void setProdutos(Set<Produto> produtos) {
+		this.produtos = produtos;
+	}
+
+	public Set<FormaDePagamento> getFormaspagamento() {
+		return formaspagamento;
+	}
+
+	public void setFormaspagamento(Set<FormaDePagamento> formaspagamento) {
+		this.formaspagamento = formaspagamento;
 	}
 
 	@Override

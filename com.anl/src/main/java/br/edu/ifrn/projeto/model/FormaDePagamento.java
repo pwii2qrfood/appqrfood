@@ -1,13 +1,17 @@
 package br.edu.ifrn.projeto.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -30,6 +34,9 @@ public class FormaDePagamento implements Serializable {
 	@ManyToOne
 	@JoinColumn( name = "id_situacao" )
 	private Situacao situacao;
+	
+	@ManyToMany(mappedBy = "formaspagamento", cascade = CascadeType.PERSIST)
+	private Set<Pedido> pedidos = new HashSet<>();
 	
 	
 	public int getIdFormaPagamento() {
@@ -64,6 +71,16 @@ public class FormaDePagamento implements Serializable {
 		this.situacao = situacao;
 	}
 	
+	
+	
+	public Set<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(Set<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
