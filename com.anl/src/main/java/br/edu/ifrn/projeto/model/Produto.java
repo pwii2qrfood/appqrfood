@@ -1,15 +1,21 @@
 package br.edu.ifrn.projeto.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+
 
 @Entity
 @Table ( name = "produto" )
@@ -33,6 +39,9 @@ public class Produto implements Serializable {
 	@ManyToOne
 	@JoinColumn ( name = "id_situacao", nullable = false )
 	private Situacao situacao;
+	
+	@ManyToMany (mappedBy = "produtos", cascade = CascadeType.PERSIST)
+	private Set<Pedido> pedidos = new HashSet<>();
 	
 	public Produto () {
 		
@@ -84,6 +93,16 @@ public class Produto implements Serializable {
 	
 	public void setSituacao(Situacao situacao) {
 		this.situacao = situacao;
+	}
+	
+	
+
+	public Set<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(Set<Pedido> pedidos) {
+		this.pedidos = pedidos;
 	}
 
 	@Override
