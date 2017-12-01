@@ -1,10 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: aos
 Build-Jdk: 1.8.0_144
-=======
-Built-By: Laisa
-Build-Jdk: 1.8.0_101
->>>>>>> 8be68f4de78895bb2f9a52ee6a2bb57d0b351b67
 Created-By: Maven Integration for Eclipse
 
