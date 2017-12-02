@@ -18,6 +18,7 @@ public class SituacaoPedido implements Serializable {
 	
 	@Id
 	@GeneratedValue ( strategy = GenerationType.IDENTITY )
+	@Column ( name = "id_situacao_pedido" )
 	private int idSituacaoPedido;
 	
 	@Column ( name = "tipo_situacao_pedido", length = 1, nullable = false )
@@ -26,7 +27,7 @@ public class SituacaoPedido implements Serializable {
 	@Column ( name = "descricao", length = 100, nullable = true ) 
 	private String descricao;
 	
-	@OneToOne ( mappedBy = "SituacaoPedido" )
+	@OneToOne ( mappedBy = "situacao_pedido" )
 	private Pedido pedido;
 
 	
