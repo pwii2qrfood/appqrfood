@@ -24,19 +24,20 @@ public class Pedido implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue ( strategy = GenerationType.IDENTITY)
+	@GeneratedValue ( strategy = GenerationType.IDENTITY )
+	@Column ( name = "id_pedido" )
 	private int idPedido;
 	
 	@Column ( name = "numero_pedido", nullable = false )
 	private String numeroPedido;
 	
-	@Column ( name = "quantidade", nullable = false)
+	@Column ( name = "quantidade", nullable = false )
 	private String quantidade;
 	
-	@Column ( name = "data", nullable = false)
+	@Column ( name = "data", nullable = false )
 	private Date data;
 	
-	@Column ( name = "hora", nullable = false)
+	@Column ( name = "hora", nullable = false )
 	private Time hora;
 	
 	@OneToOne
@@ -45,14 +46,14 @@ public class Pedido implements Serializable {
 	
 	@ManyToMany
 	@JoinTable(name="produto_has_pedido",
-	joinColumns = @JoinColumn (name = "pedido_id"),
-	inverseJoinColumns = @JoinColumn(name= "produto_id"))
+	joinColumns = @JoinColumn ( name = "pedido_id" ),
+	inverseJoinColumns = @JoinColumn( name= "produto_id" ))
 	private Set<Produto> produtos = new HashSet<>();
 	
 	@ManyToMany
 	@JoinTable(name= "pedido_has_formapagamento",
-	joinColumns = @JoinColumn (name = "pedido_id"),
-	inverseJoinColumns = @JoinColumn (name="formapagamento_id"))
+	joinColumns = @JoinColumn ( name = "pedido_id" ),
+	inverseJoinColumns = @JoinColumn ( name="formapagamento_id" ))
 	private Set<FormaDePagamento> formaspagamento = new HashSet<>();
 	
 	public int getIdPedido() {

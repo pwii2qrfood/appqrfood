@@ -11,7 +11,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table (name = "situacao_pedido")
+@Table ( name = "situacao_pedido" )
 public class SituacaoPedido implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -27,7 +27,7 @@ public class SituacaoPedido implements Serializable {
 	@Column ( name = "descricao", length = 100, nullable = true ) 
 	private String descricao;
 	
-	@OneToOne ( mappedBy = "situacao_pedido" )
+	@OneToOne ( mappedBy = "situacaopedido" )
 	private Pedido pedido;
 
 	

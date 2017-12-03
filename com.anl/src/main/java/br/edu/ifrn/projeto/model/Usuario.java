@@ -12,42 +12,57 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table (name = "usuario")
+@Table ( name = "usuario" )
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
-
-		//teste Laisa
 	
 	@Id
-	@GeneratedValue( strategy = GenerationType.IDENTITY) 
+	@GeneratedValue( strategy = GenerationType.IDENTITY )
+	@Column ( name = "id_cliente" )
 	private int idCliente;
 	
-	@Column(nullable = false, name = "nome_completo")
+	@Column( name = "nome_completo", nullable = false )
 	private String nomeCompletoCliente;
 	
-	@Column(nullable = false, name = "cpf_cliente")
+	@Column( name = "cpf_cliente", nullable = false, length = 14 )
 	private String cpfCliente;
 	
-	@Column(nullable = false, name = "rg_cliente")
+	@Column( name = "rg_cliente", nullable = false, length = 10 )
 	private String rgCliente;
+		
+	@Column( name = "tipo_cliente", nullable = false, length = 1 )
+	private String tipoCliente;
 	
-	@Column(nullable = false, name = "senha_cliente")
-	private String senhaCliente;
-	
-	@Column(nullable = false, name = "tipo_cliente")
-	private char tipoCliente;
-	
-	@Column(nullable = false, name = "nome_cliente")
+	@Column( name = "nome_cliente", nullable = false, length = 20 )
 	private String nomeCliente;
 	
-	@Column(nullable = false, name = "sobrenome_cliente")
+	@Column( name = "sobrenome_cliente", nullable = false, length = 20 )
 	private String sobrenomeCliente;
-	
+
+	@Column( name = "senha_cliente", nullable = false, length = 8 )
+	private String senhaCliente;
+
 	@ManyToOne
-	@JoinColumn(name = "id_situacao")
+	@JoinColumn( name = "id_situacao" )
 	private Situacao situacao;
 
-	public Usuario() {}
+	public Usuario() {
+		
+	}
+
+	public Usuario(int idCliente, String nomeCompletoCliente, String cpfCliente, String rgCliente,
+			String tipoCliente, String nomeCliente, String sobrenomeCliente, String senhaCliente, Situacao situacao) {
+		super();
+		this.idCliente = idCliente;
+		this.nomeCompletoCliente = nomeCompletoCliente;
+		this.cpfCliente = cpfCliente;
+		this.rgCliente = rgCliente;
+		this.tipoCliente = tipoCliente;
+		this.nomeCliente = nomeCliente;
+		this.sobrenomeCliente = sobrenomeCliente;
+		this.senhaCliente = senhaCliente;
+		this.situacao = situacao;
+	}
 
 	@Override
 	public int hashCode() {
@@ -111,11 +126,11 @@ public class Usuario implements Serializable {
 		this.senhaCliente = senhaCliente;
 	}
 
-	public char getTipoCliente() {
+	public String getTipoCliente() {
 		return tipoCliente;
 	}
 
-	public void setTipoCliente(char tipoCliente) {
+	public void setTipoCliente(String tipoCliente) {
 		this.tipoCliente = tipoCliente;
 	}
 
@@ -142,9 +157,4 @@ public class Usuario implements Serializable {
 	public void setSituacao(Situacao situacao) {
 		this.situacao = situacao;
 	}
-	
-	
-	
-	
-	
 }

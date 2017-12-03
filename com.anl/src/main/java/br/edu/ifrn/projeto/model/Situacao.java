@@ -16,14 +16,15 @@ public class Situacao implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@OneToMany (mappedBy = "situacao")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@OneToMany ( mappedBy = "situacao" )
+	@GeneratedValue( strategy = GenerationType.IDENTITY )
+	@Column ( name = "id_situacao" )
 	private int idSituacao;
 	
-	@Column(nullable = false, name = "tipo_situacao")
-	private char tipoSituacao;
+	@Column( name = "tipo_situacao", nullable = false  )
+	private String tipoSituacao;
 	
-	@Column( name = "descricao", nullable = false)
+	@Column( name = "descricao", nullable = false )
 	private String descricao;
 	
 	public Situacao() {
@@ -38,11 +39,11 @@ public class Situacao implements Serializable {
 		this.idSituacao = idSituacao;
 	}
 
-	public char getTipoSituacao() {
+	public String getTipoSituacao() {
 		return tipoSituacao;
 	}
 
-	public void setTipoSituacao(char tipoSituacao) {
+	public void setTipoSituacao(String tipoSituacao) {
 		this.tipoSituacao = tipoSituacao;
 	}
 

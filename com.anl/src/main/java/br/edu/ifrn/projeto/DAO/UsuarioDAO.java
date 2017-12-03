@@ -15,18 +15,20 @@ public class UsuarioDAO implements Serializable {
 	
 	private EntityManager manager;
 	
-	public UsuarioDAO() {}
+	public UsuarioDAO() {
+		
+	}
 	
 	public UsuarioDAO(EntityManager manager) {
 		this.manager = manager;
 	}
 	
 	public void adicionar(Usuario novousuario) {
-		manager.persist(novousuario);
+		manager.merge(novousuario);
 	}
 	
-	public Usuario pesquisarPorId(int id) {
-		return manager.find(Usuario.class, id);
+	public Usuario pesquisarPorId(int idCliente) {
+		return manager.find(Usuario.class, idCliente);
 	}
 	
 	public void remover(Usuario usuario) {
@@ -36,8 +38,8 @@ public class UsuarioDAO implements Serializable {
 	
 	public List<Usuario> pesquisar (String nome){
 		TypedQuery<Usuario> consulta =
-				manager.createQuery("from Usuario where nome like :nome_completo", Usuario.class);
-		consulta.setParameter("nome", nome + "%");
+				manager.createQuery("from Usuario where nome_completo like :nome_completo", Usuario.class);
+		consulta.setParameter("nome_completo", nome + "%");
 		return consulta.getResultList();
 	}
 

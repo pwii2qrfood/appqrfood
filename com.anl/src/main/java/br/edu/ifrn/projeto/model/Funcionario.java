@@ -22,6 +22,7 @@ public class Funcionario implements Serializable {
 	
 	@Id
 	@GeneratedValue ( strategy = GenerationType.IDENTITY )
+	@Column ( name = "id_funcionario" )
 	private int idFuncionario;
 	
 	@Column ( name = "matricula", length = 5, nullable = false )
@@ -41,7 +42,7 @@ public class Funcionario implements Serializable {
 	@Column ( name = "cpf", length = 14, nullable = false )
 	private String cpf;
 	
-	@Column ( name = "rg", length = 9, nullable = false )
+	@Column ( name = "rg", length = 10, nullable = false )
 	private String rg;
 	
 	@Column ( name = "name", length = 20, nullable = false )
@@ -49,6 +50,9 @@ public class Funcionario implements Serializable {
 		
 	@Column ( name = "sobrenome", length = 20, nullable = false )
 	private String sobreNome;
+	
+	@Column ( name = "senha", length = 8, nullable = false )
+	private String senha;
 	
 	@JoinColumn ( name = "id_situacao" )
 	@ManyToOne 
@@ -59,7 +63,7 @@ public class Funcionario implements Serializable {
 	}
 	
 	public Funcionario(int idFuncionario, String matricula, String nomeCompleto, Date dataAdmissao, Date dataDemissao,
-						String cpf, String rg, String nome, String sobreNome, Situacao situacao) {
+						String cpf, String rg, String nome, String sobreNome, String senha, Situacao situacao) {
 		
 		this.idFuncionario = idFuncionario;
 		this.matricula     = matricula;
@@ -70,6 +74,7 @@ public class Funcionario implements Serializable {
 		this.rg            = rg;
 		this.nome          = nome;
 		this.sobreNome     = sobreNome;
+		this.senha         = senha;
 		this.situacao      = situacao;
 		
 	}
@@ -106,7 +111,7 @@ public class Funcionario implements Serializable {
 		this.dataAdmissao = dataAdmissao;
 	}
 	
-	public Date getDataDmissao() {
+	public Date getDataDemissao() {
 		return dataDemissao;
 	}
 	
@@ -142,6 +147,14 @@ public class Funcionario implements Serializable {
 		return sobreNome;
 	}
 	
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
 	public void setSobreNome(String sobreNome) {
 		this.sobreNome = sobreNome;
 	}

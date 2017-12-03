@@ -25,6 +25,7 @@ public class Produto implements Serializable {
 	
 	@Id
 	@GeneratedValue ( strategy = GenerationType.IDENTITY )
+	@Column ( name = "id_produto" )
 	private int idProduto;
 	
 	@Column ( name = "nome_produto", length = 70, nullable = false )
@@ -40,7 +41,7 @@ public class Produto implements Serializable {
 	@JoinColumn ( name = "id_situacao", nullable = false )
 	private Situacao situacao;
 	
-	@ManyToMany (mappedBy = "produtos", cascade = CascadeType.PERSIST)
+	@ManyToMany ( mappedBy = "produtos", cascade = CascadeType.PERSIST )
 	private Set<Pedido> pedidos = new HashSet<>();
 	
 	public Produto () {

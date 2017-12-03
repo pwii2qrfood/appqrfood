@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 @Entity
 @Table ( name = "telefone" )
 public class Telefone implements Serializable{
@@ -18,6 +19,7 @@ public class Telefone implements Serializable{
 	
 	@Id
 	@GeneratedValue ( strategy = GenerationType.IDENTITY )
+	@Column ( name = "id_Telefone" )
 	private int idTelefone;
 	
 	@Column ( name = "numero", length = 9, nullable = false )

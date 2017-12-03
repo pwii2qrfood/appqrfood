@@ -18,7 +18,7 @@
 		<properties>
 			
 			<property name="javax.persistence.jdbc.url"
-					  value="jdbc:mysql://pwii2qrfood.mysql.dbaas.com.br"/>
+					  value="jdbc:mysql://pwii2qrfood.mysql.dbaas.com.br/pwii2qrfood"/>
 			
 			<property name="javax.persistence.jdbc.user"
 					  value="pwii2qrfood"/>
@@ -38,7 +38,7 @@
 			<property name="hibernate.format_sql"
 					  value="true"/>		  
 						
-			<!--
+			<!-- 
 			<property name="javax.persistence.schema-generation.database.action" 
 			          value="drop-and-create" />
 			          
@@ -51,8 +51,15 @@
 			<property name="hibernate.dialect"
 					  value="org.hibernate.dialect.MySQLDialect"/>
 			
-      		-->
       		
+      		
+      		<property name="hibernate.c3p0.max_size" value="20" />
+            <property name="hibernate.c3p0.min_size" value="5" />
+            <property name="hibernate.c3p0.acquire_increment" value="1" />
+            <property name="hibernate.c3p0.idle_test_period" value="15" />
+            <property name="hibernate.c3p0.max_statements" value="50" />
+            <property name="hibernate.c3p0.timeout" value="300" />
+      		-->
 		</properties>
 		
 	</persistence-unit>

@@ -23,19 +23,20 @@ public class FormaDePagamento implements Serializable {
 	
 	@Id
 	@GeneratedValue ( strategy = GenerationType.IDENTITY )
+	@Column ( name = "id_forma_pagamento" )
 	private int idFormaPagamento;
 	
-	@Column( nullable = false, name = "tipo_pagamento" )
+	@Column( name = "tipo_pagamento", nullable = false )
 	private String tipoPagamento;
 	
-	@Column( nullable = false )
+	@Column( name = "descricao", nullable = false )
 	private  String descricao;
 	
 	@ManyToOne
 	@JoinColumn( name = "id_situacao" )
 	private Situacao situacao;
 	
-	@ManyToMany(mappedBy = "formaspagamento", cascade = CascadeType.PERSIST)
+	@ManyToMany( mappedBy = "formaspagamento", cascade = CascadeType.PERSIST )
 	private Set<Pedido> pedidos = new HashSet<>();
 	
 	
